@@ -1,6 +1,6 @@
 export function Footer() {
     return (
-        <div>
+        <div className="w-full max-w-[1024px]">
             <div className="flex gap-28 my-10 text-[#0071c2]">
                 <div className="flex flex-col gap-2 text-xs">
                     <span className=" hover:text-orange-600 cursor-pointer">Countries</span>

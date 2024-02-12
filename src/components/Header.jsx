@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi } from "@fortawesome/free-solid-svg-icons";
 import { DateRange, DateRangePicker } from 'react-date-range';
 import { useState } from "react";
@@ -7,6 +8,7 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
 export function Header({ type }) {
+    const [destination, setDestination] = useState('');
     const [openDate, setOpenDate] = useState(false);
     const [date, setDate] = useState([{
         startDate: new Date(),
@@ -29,27 +31,38 @@ export function Header({ type }) {
         })
     }
 
+    const navigate = useNavigate();
+
+
+    function handleSearch(){
+        navigate('/hotels',{ state:{destination,date,options}})
+    }
+
     return (
         <div className="bg-[#003580] text-white flex justify-center">
             <div className={`${type==='list' ? 'w-full max-w-[1024px] mx-20 my-8'  :'w-full max-w-[1024px] mx-20 my-16' }`}>
-                <div className="flex gap-20 items-center">
-                    <div className="flex gap-2 items-center border-2 border-white p-2 rounded-2xl ">
+                <div className="flex gap-20 items-center p-2">
+                    <div className="flex gap-2 items-center border-2 border-white p-2 rounded-2xl cursor-pointer">
                         <FontAwesomeIcon icon={faBed} />
                         <span>Stays</span>
                     </div>
-                    <div className="flex gap-2 items-center">
+                    <div className="flex gap-2 
+                    hover:border-2 items-center hover:border-white hover:bg-opacity-25 cursor-pointer hover:rounded-2xl p-2  hover:bg-gray-400">
                         <FontAwesomeIcon icon={faPlane} />
                         <span>Flights</span>
                     </div>
-                    <div className="flex gap-2 items-center">
+                    <div className="flex gap-2 
+                    hover:border-2 items-center hover:border-white hover:bg-opacity-25 cursor-pointer hover:rounded-2xl p-2  hover:bg-gray-400">
                         <FontAwesomeIcon icon={faCar} />
                         <span>Car Rentals</span>
                     </div>
-                    <div className="flex gap-2 items-center">
+                    <div className="flex gap-2 
+                    hover:border-2 items-center hover:border-white hover:bg-opacity-25 cursor-pointer hover:rounded-2xl p-2  hover:bg-gray-400">
                         <FontAwesomeIcon icon={faBed} />
                         <span>Attractions</span>
                     </div>
-                    <div className="flex gap-2 items-center">
+                    <div className="flex gap-2 
+                    hover:border-2 items-center hover:border-white cursor-pointer hover:bg-opacity-25 hover:rounded-2xl p-2  hover:bg-gray-400">
                         <FontAwesomeIcon icon={faTaxi} />
                         <span>Airport Taxis</span>
                     </div>
@@ -60,10 +73,11 @@ export function Header({ type }) {
                         <p className="my-4 mx-0 text-2xl font-normal">Search low prices on hotels, homes and much more...</p>
 
                         <div className=" relative">
-                            <div className="h-8 bg-white border-4 border-[#febb02] flex items-center justify-between pl-4  text-gray-400  py-6 w-full max-w-[1024px] absolute bottom-[-90px]">
+                            <div className="h-8 bg-white border-4 border-[#febb02] flex items-center justify-between pl-4  text-gray-400  py-6 w-full max-w-[1024px] absolute bottom-[-90px] rounded-lg">
                                 <div className="flex items-center gap-3">
                                     <FontAwesomeIcon icon={faBed} />
-                                    <input type="text" placeholder="Where are you going?" className="border-none outline-none" />
+                                    <input type="text" placeholder="Where are you going?" className="border-none outline-none" 
+                                    onChange={ e=>setDestination(e.target.value)}/>
                                 </div>
                                 <div className="text-gray-400 flex items-center gap-3  cursor-pointer">
                                     <FontAwesomeIcon icon={faCalendarDays} />
@@ -110,7 +124,7 @@ export function Header({ type }) {
                                     </div>}
                                 </div>
                                 <div className="">
-                                    <button className="bg-[#003580] font-medium text-white  border-none py-3 px-4 cursor-pointer">Search</button>
+                                    <button className="bg-[#003580] font-medium text-white  border-none py-3 px-4 cursor-pointer" onClick={handleSearch}>Search</button>
                                 </div>
                             </div>
 
