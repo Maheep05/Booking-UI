@@ -1,3 +1,5 @@
+import { Contributor } from "./Contributor";
+
 export function Footer() {
     return (
         <div className="w-full max-w-[1024px]">
@@ -40,12 +42,12 @@ export function Footer() {
                     <span className=" hover:text-orange-600 cursor-pointer">Car hire</span>
                     <span className=" hover:text-orange-600 cursor-pointer">Flight finder</span>
                     <span className=" hover:text-orange-600 cursor-pointer">Restaurant reservations</span>
-                    <span className=" hover:text-orange-600 cursor-pointer">Booking.com for Travel Agents</span>
+                    <span className=" hover:text-orange-600 cursor-pointer">Vacation.com for Travel Agents</span>
                 </div>
 
                 <div className="flex flex-col gap-2 text-xs">
                     <span className=" hover:text-orange-600 cursor-pointer">Coronavirus (COVID-19) FAQs</span>
-                    <span className=" hover:text-orange-600 cursor-pointer">About Booking.com</span>
+                    <span className=" hover:text-orange-600 cursor-pointer">About Vacation.com</span>
                     <span className=" hover:text-orange-600 cursor-pointer">Customer Service help</span>
                     <span className=" hover:text-orange-600 cursor-pointer">Partner help</span>
                     <span className=" hover:text-orange-600 cursor-pointer">Careers</span>
@@ -70,14 +72,16 @@ export function Footer() {
             </div>
 
             <div className="flex items-center my-20 text-xs text-gray-600">
-                <span>Copyright © 1996–2024 Booking.com™. All rights reserved.</span>
+                <span>Copyright © 1996–2024 Vacation.com™. All rights reserved.</span>
             </div>
 
             <div className="flex justify-center items-center my-20 text-gray-500 text-xs ">
-                <span>Booking.com is part of Booking Holdings Inc., the world leader in online travel and related services.
+                <span>Vacation.com is part of Vacation Holdings Inc., the world leader in online travel and related services.
 
                 </span>
             </div>
+
+            <Contributor/>
         </div>
     )
 }
